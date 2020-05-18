@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Main from './pages/Main'
 import NavBar from './components/NavBar'
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Main} />
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
         </Switch>
       </div>
     </Router>
