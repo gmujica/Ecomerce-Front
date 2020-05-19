@@ -5,8 +5,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import Main from './router/Main'
 // Components
 import { ListItems, secondaryListItems } from './components/ListItems';
+import { Typography } from '@material-ui/core';
 
 
 const drawerWidth = 240;
@@ -154,7 +156,9 @@ const Dashboard = () => {
         <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        
+        <Typography h4>
+            <Main />
+        </Typography>
       </main>
     </div>
   );
