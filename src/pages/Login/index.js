@@ -12,6 +12,10 @@ import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+//import { SnackbarProvider, withSnackbar  } from 'notistack';
+import { Link as RouterLink, withRouter } from 'react-router-dom'
+
+//import CustomizedSnackBars from '../../components/CustomizedSnackbars'
 
 function Copyright() {
   return (
@@ -25,6 +29,9 @@ function Copyright() {
     </Typography>
   );
 }
+
+const MyLink = React.forwardRef((props, ref) => <RouterLink innerRef={ref} {...props} />);
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,8 +64,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const Login = () => {
   const classes = useStyles();
+
+  const hadleSubmit = () => {
+    this.getNotistack(`hello`, "warning");
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -105,6 +118,7 @@ const Login = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={hadleSubmit}
             >
               Sign In
             </Button>
@@ -115,7 +129,7 @@ const Login = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/signup" component={MyLink} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -130,4 +144,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default withRouter(Login)

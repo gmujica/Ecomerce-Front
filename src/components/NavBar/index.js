@@ -122,7 +122,7 @@ export default function NavBar() {
       onClose={handleMenuClose}
     >
       <Link to="/" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
-      <Link to="/" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>My account</MenuItem></Link>
+      <Link to="/dashboard" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>My account</MenuItem></Link>
       <Link to="/login" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>Login</MenuItem></Link>
     </Menu>
   );
@@ -181,7 +181,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Ecomerce APP
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
