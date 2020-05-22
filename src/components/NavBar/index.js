@@ -14,6 +14,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { Link } from 'react-router-dom'
 
@@ -29,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    textDecoration: 'none',
+    color: 'white'
   },
   search: {
     position: 'relative',
@@ -121,7 +125,6 @@ export default function NavBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>Profile</MenuItem></Link>
       <Link to="/dashboard" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>My account</MenuItem></Link>
       <Link to="/login" className={classes.menuItem}><MenuItem onClick={handleMenuClose}>Login</MenuItem></Link>
     </Menu>
@@ -180,9 +183,11 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
+          <Link to="/">
           <Typography className={classes.title} variant="h6" noWrap>
             Ecomerce APP
           </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -198,9 +203,12 @@ export default function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <IconButton aria-label="show 4 new mails" color="inherit" href="https://github.com/gmujica/Ecomerce-Front" target="_blank" >
+                <GitHubIcon />  
+            </IconButton>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">

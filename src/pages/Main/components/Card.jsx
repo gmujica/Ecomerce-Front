@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import IconButton from '@material-ui/core/IconButton'
 
 const useStyles = makeStyles({
   root: {
@@ -39,12 +41,13 @@ export default function MediaCard() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+        <IconButton size="small" color="secondary">
+          <AddShoppingCartIcon />
+        </IconButton>
         <Button size="small" color="primary">
           Learn More
         </Button>
+        <Typography gutterBottom variant="h5">99.99$</Typography>
       </CardActions>
     </Card>
   );

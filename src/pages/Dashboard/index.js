@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import CreateIcon from '@material-ui/icons/Create';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
-import HelpIcon from '@material-ui/icons/Help';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import Typography from '@material-ui/core/Typography';
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+const Dashboard = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -78,11 +78,11 @@ export default function Dashboard() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Statistics" icon={<PhoneIcon />} {...a11yProps(0)} />
-          <Tab label="Checkout" icon={<FavoriteIcon />} {...a11yProps(1)} />
+          <Tab label="Statistics" icon={<ShowChartIcon />} {...a11yProps(0)} />
+          <Tab label="Checkout" icon={<CreateIcon />} {...a11yProps(1)} />
           <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(2)} />
-          <Tab label="Upload Item" icon={<HelpIcon />} {...a11yProps(3)} />
-          <Tab label="Car" icon={<ShoppingBasket />} {...a11yProps(4)} />
+          <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(3)} />
+          <Tab label="Car" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
           <Tab label="Item Six" icon={<ThumbDown />} {...a11yProps(5)} />
           <Tab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
         </Tabs>
@@ -111,3 +111,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default Dashboard
