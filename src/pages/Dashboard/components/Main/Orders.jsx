@@ -38,7 +38,7 @@ const Orders = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>History Orders</Title>
       <Table>
         <TableHead>
           <TableRow>

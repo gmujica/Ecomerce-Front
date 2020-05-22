@@ -13,6 +13,8 @@ import ThumbUp from '@material-ui/icons/ThumbUp'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import HistoryIcon from '@material-ui/icons/History'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 // Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
@@ -57,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
 }));
 
@@ -105,7 +113,11 @@ const Dashboard = () => {
         Item Five
       </TabPanel>
       <TabPanel value={value} index={5}>
-        <Orders />
+        <Grid item xs={12}>
+            <Paper className={classes.paper}>
+                <Orders />
+            </Paper>
+        </Grid>  
       </TabPanel>
       <TabPanel value={value} index={6}>
         Item Seven
