@@ -9,14 +9,15 @@ import ShowChartIcon from '@material-ui/icons/ShowChart'
 import PersonPinIcon from '@material-ui/icons/PersonPin'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import ThumbDown from '@material-ui/icons/ThumbDown'
 import ThumbUp from '@material-ui/icons/ThumbUp'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import HistoryIcon from '@material-ui/icons/History'
 // Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
 import UploadItem from './components/UploadItem'
+import Orders from '../Dashboard/components/Main/Orders'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,7 +85,7 @@ const Dashboard = () => {
           <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(2)} />
           <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(3)} />
           <Tab label="Car" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
-          <Tab label="Item Six" icon={<ThumbDown />} {...a11yProps(5)} />
+          <Tab label="History" icon={<HistoryIcon />} {...a11yProps(5)} />
           <Tab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
         </Tabs>
       </AppBar>
@@ -104,7 +105,7 @@ const Dashboard = () => {
         Item Five
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <Orders />
       </TabPanel>
       <TabPanel value={value} index={6}>
         Item Seven
