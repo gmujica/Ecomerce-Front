@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5];
 
-export default function Main() {
+const Main = () => {
   const classes = useStyles();
 
   return (
@@ -116,3 +116,5 @@ export default function Main() {
     </React.Fragment>
   );
 }
+
+export default Main

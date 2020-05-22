@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import CreateIcon from '@material-ui/icons/Create';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import ThumbDown from '@material-ui/icons/ThumbDown';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import CreateIcon from '@material-ui/icons/Create'
+import ShowChartIcon from '@material-ui/icons/ShowChart'
+import PersonPinIcon from '@material-ui/icons/PersonPin'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import ThumbDown from '@material-ui/icons/ThumbDown'
+import ThumbUp from '@material-ui/icons/ThumbUp'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+// Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
 
