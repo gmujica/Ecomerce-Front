@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
 import {DropzoneArea} from 'material-ui-dropzone'
- 
+//import { makeStyles } from '@material-ui/core/styles'
+
+/*const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+  },
+  
+}));*/
 class DropzoneArea2 extends Component{
   constructor(props){
     super(props);
@@ -16,6 +23,7 @@ class DropzoneArea2 extends Component{
   render(){
     return (
       <DropzoneArea
+        //className={}
         onChange={this.handleChange.bind(this)}
         />
     )

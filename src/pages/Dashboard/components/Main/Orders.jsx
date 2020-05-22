@@ -6,10 +6,11 @@ import {
     TableBody,
     TableCell,
     TableHead,
-    TableRow
+    TableRow,
+    Typography
 
 } from '@material-ui/core'
-import Title from './Title'
+//import Title from './Title'
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -38,7 +39,7 @@ const Orders = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>History Orders</Title>
+      <Typography variant="h4">History Orders</Typography>
       <Table>
         <TableHead>
           <TableRow>

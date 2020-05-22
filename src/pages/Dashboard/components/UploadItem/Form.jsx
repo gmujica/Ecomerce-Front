@@ -1,6 +1,8 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
 //import NumberFormat from 'react-number-format';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,9 +15,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     width: '25ch',
   },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
-export default function Form() {
+const Form = () => {
   const classes = useStyles();
 
   return (
@@ -46,12 +51,22 @@ export default function Form() {
           helperText="Full width!"
           fullWidth
           margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
           variant="outlined"
         />
+      </div>
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          className={classes.button}
+          startIcon={<SaveIcon />}
+        >
+          Save
+        </Button>
       </div>
     </div>
   );
 }
+
+export default Form
