@@ -11,7 +11,7 @@ import Link from '@material-ui/core/Link'
 // Components
 import Chart from './Chart'
 import Deposits from './Deposits'
-import Orders from './Orders'
+//import Orders from './Orders'
 
 function Copyright() {
   return (
@@ -130,12 +130,12 @@ const Home = () => {
                 <Deposits />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Recent Orders 
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Orders />
               </Paper>
-            </Grid>
+            </Grid>*/}
           </Grid>
           <Box pt={8}>
           <Copyright />

@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 //import { SnackbarProvider, withSnackbar  } from 'notistack';
 import { Link as RouterLink, withRouter } from 'react-router-dom'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 //import CustomizedSnackBars from '../../components/CustomizedSnackbars'
 
@@ -62,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 4,
+    color: '#fff',
+  },
 }));
 
 
@@ -69,9 +75,13 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
 
-  const hadleSubmit = () => {
-    this.getNotistack(`hello`, "warning");
-  }
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -118,10 +128,13 @@ const Login = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={hadleSubmit}
+              onClick={handleToggle}
             >
               Sign In
             </Button>
+            <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+              <CircularProgress color="inherit" />
+            </Backdrop>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

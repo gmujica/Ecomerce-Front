@@ -16,6 +16,7 @@ import Box from '@material-ui/core/Box'
 // Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
+import UploadItem from './components/UploadItem'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -97,7 +98,7 @@ const Dashboard = () => {
         Item Three
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <UploadItem />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five

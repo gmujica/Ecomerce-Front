@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    textDecoration: 'none',
+    textDecoration: 'none!important',
     color: 'white'
   },
   search: {
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavBar() {
+const NavBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -184,7 +184,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Link to="/">
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6">
             Ecomerce APP
           </Typography>
           </Link>
@@ -245,3 +245,5 @@ export default function NavBar() {
     </div>
   );
 }
+
+export default NavBar
