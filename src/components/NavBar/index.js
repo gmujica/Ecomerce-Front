@@ -184,7 +184,7 @@ const NavBar = () => {
             <MenuIcon />
           </IconButton>
           <Link to="/">
-          <Typography className={classes.title} variant="h6">
+          <Typography className={classes.title} variant="h6" component={'div'}>
             Ecomerce APP
           </Typography>
           </Link>
