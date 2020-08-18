@@ -1,11 +1,11 @@
 import React from 'react'
 import { useTheme } from '@material-ui/core/styles'
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts'
-import Title from './Title';
+import Title from './Title'
 
 // Generate Sales Data
 function createData(time, amount) {
-  return { time, amount };
+  return { time, amount }
 }
 
 const data = [

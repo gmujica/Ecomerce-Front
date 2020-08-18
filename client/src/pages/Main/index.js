@@ -53,12 +53,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}));
+}))
 
 const cards = [1, 2, 3, 4, 5];
 
 const Main = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <React.Fragment>

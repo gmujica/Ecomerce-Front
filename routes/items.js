@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const Item = require('../models/Item');
+const express = require('express')
+const router = express.Router()
+const Item = require('../models/Item')
 
 //GET ALL
 router.get('/', async (req,res) =>{
@@ -10,7 +10,7 @@ router.get('/', async (req,res) =>{
     } catch(err) {
         res.json({ message:err })
     }
-});
+})
 
 //SUBMIT
 router.post('/', async (req,res) => {
@@ -27,18 +27,18 @@ router.post('/', async (req,res) => {
     } catch (err) {
         res.json({ message: err });
     }
-});
+})
 
 //GET A SPECIFIC 
 router.get('/:itemId', async (req,res) => {
     //console.log(req.params.itemId);
     try {
         const post = await Post.findById(req.params.itemId);
-        res.json(post);
+        res.json(post)
     }catch(err){
         res.json({ message:err })
     }
-});
+})
 
 //DELETE 
 router.delete('/:itemId', async (req,res) => {
@@ -63,4 +63,4 @@ router.patch('/:itemId', async (req,res) => {
     }
 })
 
-module.exports = router;
+module.exports = router

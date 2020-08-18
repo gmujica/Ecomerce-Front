@@ -68,12 +68,12 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 4,
     color: '#fff',
   },
-}));
+}))
 
 
 
 const Login = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -81,7 +81,7 @@ const Login = () => {
   };
   const handleToggle = () => {
     setOpen(!open);
-  };
+  }
 
   return (
     <Grid container component="main" className={classes.root}>

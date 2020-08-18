@@ -5,14 +5,14 @@ import Typography from '@material-ui/core/Typography'
 import Title from './Title'
 
 function preventDefault(event) {
-  event.preventDefault();
+  event.preventDefault()
 }
 
 const useStyles = makeStyles({
   depositContext: {
     flex: 1,
   },
-});
+})
 
 const Deposits = () => {
   const classes = useStyles();
