@@ -19,7 +19,7 @@ app.get('/', (req,res) =>{
     res.send('Hello Word from Api');
 });
 
-const PORT = 8000
+const PORT = 7500
 
 
 //CONNET TO DB
