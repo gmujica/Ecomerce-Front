@@ -25,7 +25,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
+      //flexGrow: 1,
       padding: '2.5em',
     },
     paper: {
@@ -35,7 +35,13 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       width: '90%'
     },
-    icon: {
+    cardGrid: {
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      display: 'flex',
+      
+    },
+   /* icon: {
       marginRight: theme.spacing(2),
     },
     heroContent: {
@@ -45,10 +51,7 @@ const useStyles = makeStyles((theme) => ({
     heroButtons: {
       marginTop: theme.spacing(4),
     },
-    cardGrid: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-    },
+    
     card: {
       height: '100%',
       display: 'flex',
@@ -59,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
     },
     cardContent: {
       flexGrow: 1,
-    },
+    },*/
     footer: {
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(6),
     },
   }))
 
-  const cards = [1, 2, 3, 4, 5, 6];
+  //const cards = [1, 2, 3, 4, 5, 6];
 
 const UploadItem = () => { 
     const classes = useStyles()
@@ -85,8 +88,18 @@ const UploadItem = () => {
                       </Paper>
                     </Grid>
                     <Grid container spacing={3} className={classes.root}>
+                      <Container className={classes.cardGrid}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}> 
+                              <Card />
+                            </Grid>
+                        </Grid>
+                      </Container>
+                    </Grid>
+
+                    {/*<Grid container spacing={3} className={classes.root}>
                       <Container className={classes.cardGrid} maxWidth="md">
-                        {/* End hero unit */}
+                   
                         <Grid container spacing={1}>
                           {cards.map((card) => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
@@ -95,7 +108,7 @@ const UploadItem = () => {
                           ))}
                         </Grid>
                       </Container>
-                    </Grid>
+                    </Grid>*/}
                 </Grid>
                 <Copyright />
             </div>
