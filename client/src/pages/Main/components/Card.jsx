@@ -11,6 +11,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import IconButton from '@material-ui/core/IconButton'
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,9 +61,9 @@ const MediaCard = () => {
   const classes = useStyles();
 
   return (
-        <div className={classes.cardGrid}>
+    <Container className={classes.cardGrid} maxWidth="md">
           {items.map(item => (
-            <Card key={item._id} className={classes.card}>
+            <Card key={item._id} >
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
@@ -89,7 +90,7 @@ const MediaCard = () => {
               </CardActions>
             </Card>
           ))}
-        </div>
+        </Container>
   );
 }
 
