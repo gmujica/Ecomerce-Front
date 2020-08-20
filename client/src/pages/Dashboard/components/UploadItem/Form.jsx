@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2),
     width: '25ch',
   },
   button: {
@@ -64,7 +65,7 @@ const Form = () => {
         </div>
         <div>
           <TextField
-            label="Title"
+            label="Name"
             name="name"
             value={formData.name} 
             onChange={handleChange} 
@@ -72,7 +73,7 @@ const Form = () => {
             id="outlined-margin-none"
             //defaultValue="Default Value"
             className={classes.textField}
-            helperText="Some important text"
+            //helperText="Some important text"
             variant="outlined"
           />
           <TextField
@@ -84,9 +85,31 @@ const Form = () => {
             id="outlined-margin-none"
             //defaultValue="Default Value"
             className={classes.textField}
-            helperText="Some important text"
+            //helperText="Some important text"
             variant="outlined"
             //startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          />
+          <TextField
+            label="label"
+            //name="name"
+            //value={formData.name} 
+            onChange={handleChange} 
+            //required
+            id="outlined-margin-none"
+            //defaultValue="Default Value"
+            className={classes.textField}
+            //helperText="Some important text"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-number"
+            label="Cantidad"
+            type="number"
+            className={classes.textField} 
+            /*InputLabelProps={{
+              shrink: true,
+            }}*/
+            variant="outlined"
           />
           <TextField
             name="description"
