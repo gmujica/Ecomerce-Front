@@ -88,26 +88,27 @@ const Dashboard = () => {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Statistics" icon={<ShowChartIcon />} {...a11yProps(0)} />
+          <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(0)} />
+          
           <Tab label="Checkout" icon={<CreateIcon />} {...a11yProps(1)} />
-          <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(2)} />
-          <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(3)} />
+          <Tab label="Items" icon={<ThumbUp />} {...a11yProps(2)} />
+          <Tab label="Statistics" icon={<ShowChartIcon />} {...a11yProps(3)} />
           <Tab label="Car" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
           <Tab label="History" icon={<HistoryIcon />} {...a11yProps(5)} />
-          <Tab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
+          <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(6)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Main />
+        <UploadItem />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Checkout />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Item Seven
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <UploadItem />
+        <Main />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five
@@ -120,8 +121,8 @@ const Dashboard = () => {
         </Grid>  
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+        Item Three
+      </TabPanel>     
     </div>
   );
 }

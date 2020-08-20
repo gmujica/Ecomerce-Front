@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import { Typography } from '@material-ui/core'
-//import Grid from '@material-ui/core/Grid';
-//import NumberFormat from 'react-number-format';
+  
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +27,35 @@ const useStyles = makeStyles((theme) => ({
 
 const Form = () => {
   const classes = useStyles();
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    description: '', 
+    price: ''
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    //alert('hello world')
+    axios.post('http://localhost:7500/items', formData)
+      .then(function (response) {
+          console.log(response)
+      })
+      .catch(function (error) {
+          console.log(error)
+      })
+  }
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData, 
+      [event.target.name]: event.target.value
+    
+    })
+    console.log(formData)
+  }
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
       <div>
         <div className={classes.title}>
           <Typography variant="h5">
@@ -39,6 +65,10 @@ const Form = () => {
         <div>
           <TextField
             label="Title"
+            name="name"
+            value={formData.name} 
+            onChange={handleChange} 
+            required
             id="outlined-margin-none"
             //defaultValue="Default Value"
             className={classes.textField}
@@ -47,6 +77,10 @@ const Form = () => {
           />
           <TextField
             label="$"
+            name="price"
+            value={formData.price} 
+            onChange={handleChange} 
+            required
             id="outlined-margin-none"
             //defaultValue="Default Value"
             className={classes.textField}
@@ -55,6 +89,10 @@ const Form = () => {
             //startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
           <TextField
+            name="description"
+            value={formData.description} 
+            onChange={handleChange} 
+            required
             id="outlined-full-width"
             label="Description"
             style={{ margin: 8 }}
@@ -71,6 +109,7 @@ const Form = () => {
             color="primary"
             size="large"
             className={classes.button}
+            onClick={handleSubmit}
             startIcon={<SaveIcon />}
           >
             Save

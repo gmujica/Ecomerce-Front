@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import DropzoneArea from './DropzoneArea'
-//import AccordionContent from './AccordionContent'
 import Form from './Form'
 import Link from '@material-ui/core/Link'
 import Container from '@material-ui/core/Container'
@@ -16,8 +15,10 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import IconButton from '@material-ui/core/IconButton'
-import axios from 'axios'
-//import saveItem from '../../../../services/index'
+import useFetchItems from '../../../../services/useFetchItems'
+//import axios from 'axios'
+//import Card from '../../../Main/components/Card'
+//import {Copyright} from '../../../../utils/Utils'
 
 function Copyright() {
     return (
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroContent: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(8, 0, 6),
+      //padding: theme.spacing(8, 0, 6),
     },
     heroButtons: {
       marginTop: theme.spacing(4),
@@ -80,44 +81,31 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
     },
   }))
-  
 
-  export default function UploadItem() { 
+const UploadItem = () => { 
     const classes = useStyles()
 
-    const BASE_URL = 'http://localhost:7500'
+    const { items, loading, error } = useFetchItems()
 
-      const [items, setItems] = useState([])
+    /*const BASE_URL = 'http://localhost:7500'
 
-      useEffect(() => {
-        axios({
-          url:`${BASE_URL}/items`,
-          method:'GET',
-        })
-        .then(res =>{
-          console.log('Data has been GET from the server', res)
-          setItems(res.data)
-          
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      }, [])
+  const [items, setItems] = useState([])
 
-      /*saveItem = () => {
-        axios({
-          url:`${BASE_URL}/items`,
-          method:'GET',
-        })
-        .then(res =>{
-          console.log('Data has been GET from the server', res)
-          setItems(res.data)
-          
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      }*/
+  useEffect(() => {
+    axios({
+      url:`${BASE_URL}/items`,
+      method:'GET',
+      //data: payload
+    })
+    .then(res =>{
+      console.log('Data has been GET from the server', res)
+      setItems(res.data)
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])*/
 
         return (
             <>
@@ -134,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
                     </Grid>
                     <Container className={classes.cardGrid} maxWidth="md">
                       <Grid container spacing={2}>
-                        {items.reverse().map((item) => (
+                        {items.map((item) => (
                           <Grid item key={item._id} xs={12} sm={6}>
                             <Card key={item._id}>
                               <CardActionArea>
@@ -148,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
                                     {item.name}
                                   </Typography>
                                   <Typography variant="body2" color="textSecondary" component="p">
-                                    {item.description}
+                                    {item.email}
                                   </Typography>
                                 </CardContent>
                               </CardActionArea>
@@ -159,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
                                 <Button size="small" color="primary">
                                   Learn More
                                 </Button>
-                                <Typography gutterBottom variant="h5">{item.price}$</Typography>
+                                <Typography gutterBottom variant="h5">{item.phone}$</Typography>
                               </CardActions>
                             </Card>
                           </Grid>
@@ -172,3 +160,4 @@ const useStyles = makeStyles((theme) => ({
         )
 }
 
+export default UploadItem

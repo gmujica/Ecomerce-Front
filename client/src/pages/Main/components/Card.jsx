@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import IconButton from '@material-ui/core/IconButton'
 import axios from 'axios'
-import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +74,7 @@ const MediaCard = () => {
                     {item.name}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    {item.email}
+                    {item.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -86,7 +85,7 @@ const MediaCard = () => {
                 <Button size="small" color="primary">
                   Learn More
                 </Button>
-                <Typography gutterBottom variant="h5">{item.phone}$</Typography>
+                <Typography gutterBottom variant="h5">{item.price}$</Typography>
               </CardActions>
             </Card>
           ))}
