@@ -77,6 +77,24 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
     },
   }))
+
+  const handleDelete = () => {
+    alert('Delete')
+      /*axios({
+        url:`http://localhost:7500/items/${e.target.value}`,
+        method:'DELETE',
+        //data: payload
+      })
+      .then(() =>{
+        console.log('Data has been delete from the server');
+        this.resetUserInputs()
+        this.getItemsData()
+      })
+      .catch(() => {
+        console.log('Internal server error');
+      })
+    */
+  }
   
 
   export default function Items() { 
@@ -148,7 +166,8 @@ const useStyles = makeStyles((theme) => ({
                                   color="secondary"
                                   size="small"
                                   className={classes.button}
-                                  //onClick={handleSubmit}
+                                  value={item._id}
+                                  onClick={handleDelete}
                                   startIcon={<DeleteIcon />}
                                 >
                                   Delete

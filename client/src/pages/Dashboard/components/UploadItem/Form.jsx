@@ -95,7 +95,7 @@ const Form = () => {
             className={classes.textField}
             variant="outlined"
           />
-          <TextField
+          {/*<TextField
             label="label"
             //name="name"
             //value={formData.name} 
@@ -106,7 +106,7 @@ const Form = () => {
             className={classes.textField}
             //helperText="Some important text"
             variant="outlined"
-          />
+          />*/}
           <TextField
             id="outlined-number"
             label="Cantidad"
@@ -122,7 +122,6 @@ const Form = () => {
             id="outlined-full-width"
             label="Description"
             style={{ margin: 8 }}
-            helperText="Full width!"
             fullWidth
             margin="normal"
             variant="outlined"
