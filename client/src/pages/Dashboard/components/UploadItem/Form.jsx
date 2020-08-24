@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import { Typography } from '@material-ui/core'
+import { useSnackbar } from 'notistack';
+
   
 
 const useStyles = makeStyles((theme) => ({
@@ -34,22 +36,31 @@ const Form = () => {
     price: ''
   })
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    //alert('hello world')
     axios.post('http://localhost:7500/items', formData)
       .then(function (response) {
-          console.log(response)
+          if(response.status === 200) {
+            setFormData({
+              ...formData, 
+              name: '', 
+              description: '', 
+              price: ''
+            })
+            enqueueSnackbar('Success', {variant: 'success'});
+          }
       })
       .catch(function (error) {
           console.log(error)
       })
   }
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData, 
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     
     })
     console.log(formData)
@@ -71,9 +82,7 @@ const Form = () => {
             onChange={handleChange} 
             required
             id="outlined-margin-none"
-            //defaultValue="Default Value"
             className={classes.textField}
-            //helperText="Some important text"
             variant="outlined"
           />
           <TextField
@@ -83,11 +92,8 @@ const Form = () => {
             onChange={handleChange} 
             required
             id="outlined-margin-none"
-            //defaultValue="Default Value"
             className={classes.textField}
-            //helperText="Some important text"
             variant="outlined"
-            //startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
           <TextField
             label="label"
@@ -106,9 +112,6 @@ const Form = () => {
             label="Cantidad"
             type="number"
             className={classes.textField} 
-            /*InputLabelProps={{
-              shrink: true,
-            }}*/
             variant="outlined"
           />
           <TextField
@@ -119,7 +122,6 @@ const Form = () => {
             id="outlined-full-width"
             label="Description"
             style={{ margin: 8 }}
-            //placeholder="Placeholder"
             helperText="Full width!"
             fullWidth
             margin="normal"

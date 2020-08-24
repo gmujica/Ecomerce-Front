@@ -15,16 +15,20 @@ import Box from '@material-ui/core/Box'
 import HistoryIcon from '@material-ui/icons/History'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import { SnackbarProvider } from 'notistack';
+
 // Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
 import UploadItem from './components/UploadItem'
+import Items from './components/Items'
 import Orders from '../Dashboard/components/Main/Orders'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
+    
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -77,6 +81,7 @@ const Dashboard = () => {
   };
 
   return (
+    <SnackbarProvider>
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
@@ -105,7 +110,7 @@ const Dashboard = () => {
         <Checkout />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Seven
+        <Items />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Main />
@@ -124,6 +129,7 @@ const Dashboard = () => {
         Item Three
       </TabPanel>     
     </div>
+    </SnackbarProvider>
   );
 }
 
