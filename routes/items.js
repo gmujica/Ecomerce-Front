@@ -17,8 +17,8 @@ router.post('/', async (req,res) => {
      console.log(req.body);
      const item = new Item({
         name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
+        description: req.body.description,
+        price: req.body.price,
         //type: this.state.personal
     });  
     try {

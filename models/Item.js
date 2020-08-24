@@ -6,11 +6,11 @@ const ItemSchema = mongoose.Schema({
         require: true
     },
     //description: String,
-    email:  {
+    description:  {
         type: String,
         require: true
     },
-    phone: {
+    price: {
         type: Number,
         require: true
     },

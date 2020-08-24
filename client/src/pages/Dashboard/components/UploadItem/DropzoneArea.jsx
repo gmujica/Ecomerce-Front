@@ -5,7 +5,7 @@ import {DropzoneArea} from 'material-ui-dropzone'
 /*const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-  },
+  }, 
   
 }));*/
 class DropzoneArea2 extends Component{

@@ -15,16 +15,20 @@ import Box from '@material-ui/core/Box'
 import HistoryIcon from '@material-ui/icons/History'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import { SnackbarProvider } from 'notistack';
+
 // Components
 import Checkout from './components/Checkout'
 import Main from './components/Main'
 import UploadItem from './components/UploadItem'
+import Items from './components/Items'
 import Orders from '../Dashboard/components/Main/Orders'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
+    
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -77,6 +81,7 @@ const Dashboard = () => {
   };
 
   return (
+    <SnackbarProvider>
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
@@ -88,26 +93,27 @@ const Dashboard = () => {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Statistics" icon={<ShowChartIcon />} {...a11yProps(0)} />
+          <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(0)} />
+          
           <Tab label="Checkout" icon={<CreateIcon />} {...a11yProps(1)} />
-          <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(2)} />
-          <Tab label="Upload Item" icon={<CloudUploadIcon />} {...a11yProps(3)} />
+          <Tab label="Items" icon={<ThumbUp />} {...a11yProps(2)} />
+          <Tab label="Statistics" icon={<ShowChartIcon />} {...a11yProps(3)} />
           <Tab label="Car" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
           <Tab label="History" icon={<HistoryIcon />} {...a11yProps(5)} />
-          <Tab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
+          <Tab label="Profile" icon={<PersonPinIcon />} {...a11yProps(6)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Main />
+        <UploadItem />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Checkout />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Items />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <UploadItem />
+        <Main />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five
@@ -120,9 +126,10 @@ const Dashboard = () => {
         </Grid>  
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+        Item Three
+      </TabPanel>     
     </div>
+    </SnackbarProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -9,47 +9,87 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import IconButton from '@material-ui/core/IconButton'
+import axios from 'axios'
+import Container from '@material-ui/core/Container'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    //maxWidth: 345,
+    //display: 'flex',
+    padding: '2.5em'
   },
   media: {
     height: 140,
   },
-});
+  cardGrid: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    display: 'flex',
+    
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    width: '1000px',
+    flexDirection: 'column',
+  },
+}));
 
 const MediaCard = () => {
+
+  const BASE_URL = 'http://localhost:7500'
+
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    axios({
+      url:`${BASE_URL}/items`,
+      method:'GET',
+      //data: payload
+    })
+    .then(res =>{
+      console.log('Data has been GET from the server', res)
+      setItems(res.data)
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])
+
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://source.unsplash.com/random"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <IconButton size="small" color="secondary">
-          <AddShoppingCartIcon />
-        </IconButton>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-        <Typography gutterBottom variant="h5">99.99$</Typography>
-      </CardActions>
-    </Card>
+    <Container className={classes.cardGrid} maxWidth="md">
+          {items.map(item => (
+            <Card key={item._id} >
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="https://source.unsplash.com/random"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {item.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {item.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <IconButton size="small" color="secondary">
+                  <AddShoppingCartIcon />
+                </IconButton>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+                <Typography gutterBottom variant="h5">{item.price}$</Typography>
+              </CardActions>
+            </Card>
+          ))}
+        </Container>
   );
 }
 
