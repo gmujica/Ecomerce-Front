@@ -5,9 +5,9 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import { Typography } from '@material-ui/core'
-import { useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack'
+//import { useForm } from 'react-hook-form'
 
-  
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +33,12 @@ const Form = () => {
   const [formData, setFormData] = useState({ 
     name: '', 
     description: '', 
-    price: ''
+    price: '',
+    quantity: ''
+  })
+
+  React.useEffect(() => {
+     
   })
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
@@ -47,7 +52,8 @@ const Form = () => {
               ...formData, 
               name: '', 
               description: '', 
-              price: ''
+              price: '',
+              quantity: ''
             })
             enqueueSnackbar('Success', {variant: 'success'});
           }
@@ -76,21 +82,23 @@ const Form = () => {
         </div>
         <div>
           <TextField
+            required
+            //error={true}
             label="Name"
             name="name"
             value={formData.name} 
-            onChange={handleChange} 
-            required
+            onChange={handleChange}
             id="outlined-margin-none"
             className={classes.textField}
             variant="outlined"
           />
           <TextField
+            required
+            //error={true}
             label="$"
             name="price"
             value={formData.price} 
-            onChange={handleChange} 
-            required
+            onChange={handleChange}
             id="outlined-margin-none"
             className={classes.textField}
             variant="outlined"
@@ -108,17 +116,23 @@ const Form = () => {
             variant="outlined"
           />*/}
           <TextField
+            required
+            //error={true}
+            name="quantity"
+            value={formData.quantity} 
+            onChange={handleChange}
             id="outlined-number"
-            label="Cantidad"
+            label="quantity"
             type="number"
             className={classes.textField} 
             variant="outlined"
           />
           <TextField
+            required
+            //error={true}
             name="description"
             value={formData.description} 
             onChange={handleChange} 
-            required
             id="outlined-full-width"
             label="Description"
             style={{ margin: 8 }}

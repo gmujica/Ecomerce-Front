@@ -10,9 +10,12 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
-import IconButton from '@material-ui/core/IconButton'
+//import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+//import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
+import CreateIcon from '@material-ui/icons/Create'
+import Avatar from '@material-ui/core/Avatar'
+import Chip from '@material-ui/core/Chip'
 import axios from 'axios'
 //import saveItem from '../../../../services/index'
 
@@ -79,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   }))
 
   const handleDelete = () => {
-    alert('Delete')
+    alert('Button')
       /*axios({
         url:`http://localhost:7500/items/${e.target.value}`,
         method:'DELETE',
@@ -119,69 +122,78 @@ const useStyles = makeStyles((theme) => ({
         })
       }, [])
 
-      /*saveItem = () => {
-        axios({
-          url:`${BASE_URL}/items`,
-          method:'GET',
-        })
-        .then(res =>{
-          console.log('Data has been GET from the server', res)
-          setItems(res.data)
-          
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      }*/
-
-        return (
+          return (
             <>
-                <Grid container spacing={3} className={classes.root}>
-                    <Container className={classes.cardGrid} maxWidth="md">
-                      <Grid container spacing={2}>
-                        {items.reverse().map((item) => (
-                          <Grid item key={item._id} xs={12} sm={6}>
-                            <Card key={item._id}>
-                              <CardActionArea>
-                                <CardMedia
-                                  className={classes.media}
-                                  image="https://source.unsplash.com/random"
-                                  title="Contemplative Reptile"
-                                />
-                                <CardContent>
-                                  <Typography gutterBottom variant="h5" component="h2">
-                                    {item.name}
-                                  </Typography>
-                                  <Typography variant="body2" color="textSecondary" component="p">
-                                    {item.description}
-                                  </Typography>
-                                </CardContent>
-                              </CardActionArea>
-                              <CardActions>
-                                <IconButton size="small" color="secondary">
-                                  <AddShoppingCartIcon />
-                                </IconButton>
-                                <Button
-                                  variant="contained"
-                                  color="secondary"
-                                  size="small"
-                                  className={classes.button}
-                                  value={item._id}
-                                  onClick={handleDelete}
-                                  startIcon={<DeleteIcon />}
-                                >
-                                  Delete
-                                </Button>
-                                <Typography gutterBottom variant="h5">{item.price}$</Typography>
-                              </CardActions>
-                            </Card>
-                          </Grid>
-                        ))}
-                      </Grid>
-                    </Container>
-                </Grid>
-                <Copyright />
+              <Grid container spacing={3} className={classes.root}>
+                  <Container className={classes.cardGrid} maxWidth="md">
+                    <Grid container spacing={2}>
+                      {items.reverse().map((item) => (
+                        <Grid item key={item._id} xs={12} sm={6}>
+                          <Card key={item._id}>
+                           <CardActionArea>
+                              <CardMedia
+                                className={classes.media}
+                                image="https://source.unsplash.com/random"
+                                title="Contemplative Reptile"
+                              />
+                             <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                  {item.name}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                  {item.description}
+                                </Typography>
+                              </CardContent>
+                            </CardActionArea>
+                            <CardActions>
+                              {/*<IconButton size="small" color="secondary">
+                                <AddShoppingCartIcon />
+                              </IconButton>*/}
+                              <Chip
+                                label={`Stock: ${item.quantity}`}
+                                avatar={<Avatar>#</Avatar>}
+                                variant="outlined"
+                                color="primary"
+                                size="medium"                                
+                              />
+                              <Chip
+                                label={`Price: ${item.price}`}
+                                avatar={<Avatar>$</Avatar>}
+                                variant="outlined"
+                                color="primary"
+                                size="medium"
+                              />
+                              <Button
+                                variant="contained"
+                                //color="secondary"
+                                size="small"
+                                className={classes.button}
+                                value={item._id}
+                                onClick={handleDelete}
+                                startIcon={<CreateIcon />}
+                              >
+                                Update
+                              </Button>
+                              <Button
+                                variant="contained"
+                                color="secondary"
+                                size="small"
+                                className={classes.button}
+                                value={item._id}
+                                onClick={handleDelete}
+                                startIcon={<DeleteIcon />}
+                              >
+                                Delete
+                              </Button>
+                            </CardActions>
+                          </Card>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Container>
+              </Grid>
+              <Copyright />
             </>
-        )
-}
+          )
+  }
 

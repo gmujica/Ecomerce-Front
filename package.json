@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.28",
     "notistack": "^1.0.0",
+    "react-hook-form": "^6.5.1",
     "require": "^2.4.20",
     "requirejs": "^2.3.6",
     "uuid": "^8.2.0"

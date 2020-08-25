@@ -14,6 +14,10 @@ const ItemSchema = mongoose.Schema({
         type: Number,
         require: true
     },
+    quantity: {
+        type: Number,
+        require: true
+    },
     /*type: {
         type: String,
         require: true
