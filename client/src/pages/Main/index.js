@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
-//import Toolbar from '@material-ui/core/Toolbar'
+import Card from '@material-ui/core/Card'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 import Link from '@material-ui/core/Link'
-
-import Card from './components/Card.jsx'
+import Avatar from '@material-ui/core/Avatar'
+import Chip from '@material-ui/core/Chip'
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -55,10 +62,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5];
+//const cards = [1, 2, 3, 4, 5];
 
 const Main = () => {
   const classes = useStyles();
+
+  const BASE_URL = 'http://localhost:7500'
+
+      const [items, setItems] = useState([])
+
+      useEffect(() => {
+        axios({
+          url:`${BASE_URL}/items`,
+          method:'GET',
+        })
+        .then(res =>{
+          console.log('Data has been GET from the server', res)
+          setItems(res.data)
+          
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }, [])
 
   return (
     <React.Fragment>
@@ -90,17 +116,51 @@ const Main = () => {
               </Grid>
             </div>
           </Container>
-        </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+          <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {/*cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card />
+            {items.reverse().map((item) => (
+              <Grid  key={item._id}  item xs={12} sm={6}>
+                <Card key={item._id}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image="https://source.unsplash.com/random"
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {item.name}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                   <IconButton size="small" color="secondary">
+                      <AddShoppingCartIcon />
+                    </IconButton>
+                    <Chip
+                      label={`Stock: ${item.quantity}`}
+                      avatar={<Avatar>#</Avatar>}
+                      variant="outlined"
+                      color="primary"
+                      size="medium"                                
+                    />
+                    <Chip
+                      label={`Price: ${item.price}`}
+                      avatar={<Avatar>$</Avatar>}
+                      variant="outlined"
+                      color="primary"
+                      size="medium"
+                    />
+                  </CardActions>
+                </Card>
               </Grid>
-            ))*/}
+            ))}
           </Grid>
         </Container>
+        </div>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
