@@ -2,12 +2,13 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
+//import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 
-//import Card from './components/Card.jsx'
+import Card from './components/Card.jsx'
 
 function Copyright() {
   return (
@@ -52,12 +53,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}))
+}));
 
-//const cards = [1, 2, 3, 4, 5, 6];
+const cards = [1, 2, 3, 4, 5];
 
 const Main = () => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <React.Fragment>
@@ -90,16 +91,16 @@ const Main = () => {
             </div>
           </Container>
         </div>
-        {/*<Container className={classes.cardGrid} maxWidth="md">
-       
+        <Container className={classes.cardGrid} maxWidth="md">
+          {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {/*cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card />
               </Grid>
-            ))}
+            ))*/}
           </Grid>
-        </Container>*/}
+        </Container>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>

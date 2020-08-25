@@ -6,9 +6,10 @@ import DropzoneArea from './DropzoneArea'
 import Form from './Form'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+import { Copyright } from '../../../../utils'
 import axios from 'axios'
 
-function Copyright() {
+/*function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
@@ -19,7 +20,7 @@ function Copyright() {
         {'.'}
       </Typography>
     );
-}
+}*/
 
 const useStyles = makeStyles((theme) => ({
     root: {
