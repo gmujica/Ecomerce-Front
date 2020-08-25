@@ -81,8 +81,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }))
 
-  const handleDelete = () => {
-    alert('Button')
+  const handleDelete = (e) => {
+    e.preventDefault()
+    const id = e.value
+    console.log(id)
       /*axios({
         url:`http://localhost:7500/items/${e.target.value}`,
         method:'DELETE',

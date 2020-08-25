@@ -4,23 +4,8 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import DropzoneArea from './DropzoneArea'
 import Form from './Form'
-import Link from '@material-ui/core/Link'
-import Typography from '@material-ui/core/Typography'
 import { Copyright } from '../../../../utils'
 import axios from 'axios'
-
-/*function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-}*/
 
 const useStyles = makeStyles((theme) => ({
     root: {
