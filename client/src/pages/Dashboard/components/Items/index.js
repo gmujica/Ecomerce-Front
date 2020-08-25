@@ -18,6 +18,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Chip from '@material-ui/core/Chip'
 import axios from 'axios'
 //import saveItem from '../../../../services/index'
+import UpdateButton from './UpdateButton'
 
 function Copyright() {
     return (
@@ -165,17 +166,7 @@ const useStyles = makeStyles((theme) => ({
                                 color="primary"
                                 size="medium"
                               />
-                              <Button
-                                variant="contained"
-                                //color="secondary"
-                                size="small"
-                                className={classes.button}
-                                value={item._id}
-                                onClick={handleDelete}
-                                startIcon={<CreateIcon />}
-                              >
-                                Update
-                              </Button>
+                              <UpdateButton />
                               <Button
                                 variant="contained"
                                 color="secondary"

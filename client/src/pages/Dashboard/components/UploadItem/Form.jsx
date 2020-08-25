@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import { Typography } from '@material-ui/core'
 import { useSnackbar } from 'notistack'
+
 //import { useForm } from 'react-hook-form'
 
 
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Form = () => {
+function Form () {
   const classes = useStyles();
   const [formData, setFormData] = useState({ 
     name: '', 
@@ -103,18 +104,6 @@ const Form = () => {
             className={classes.textField}
             variant="outlined"
           />
-          {/*<TextField
-            label="label"
-            //name="name"
-            //value={formData.name} 
-            onChange={handleChange} 
-            //required
-            id="outlined-margin-none"
-            //defaultValue="Default Value"
-            className={classes.textField}
-            //helperText="Some important text"
-            variant="outlined"
-          />*/}
           <TextField
             required
             //error={true}
