@@ -8,7 +8,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import CreateIcon from '@material-ui/icons/Create'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const styles = (theme) => ({
   root: {
@@ -50,7 +50,7 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function UpdateButton(props) {
+export default function DeleteButton(props) {
   const [open, setOpen] = React.useState(false);
 
   //const classes = useStyles()
@@ -66,14 +66,14 @@ export default function UpdateButton(props) {
     <div>
       <Button 
         variant="contained"
-        //color="secondary"
+        color="secondary"
         size="small"
         //className={classes.button}
         //value={item._id}
         //onClick={handleDelete}
-        startIcon={<CreateIcon />} onClick={handleClickOpen}
+        startIcon={<DeleteIcon />} onClick={handleClickOpen}
       >
-        Update
+        Delete
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>

@@ -19,6 +19,8 @@ import Chip from '@material-ui/core/Chip'
 import axios from 'axios'
 //import saveItem from '../../../../services/index'
 import UpdateButton from './UpdateButton'
+import DeleteButton from './DeleteButton'
+import { getItems } from '../../../../utils'
 
 function Copyright() {
     return (
@@ -84,8 +86,8 @@ const useStyles = makeStyles((theme) => ({
 
   const handleDelete = (e) => {
     e.preventDefault()
-    const id = e.value
-    console.log(id)
+    const id = e.target.value
+    alert(id)
       /*axios({
         url:`http://localhost:7500/items/${e.target.value}`,
         method:'DELETE',
@@ -102,15 +104,18 @@ const useStyles = makeStyles((theme) => ({
     */
   }
   
+  const BASE_URL = 'http://localhost:7500'
 
   export default function Items() { 
     const classes = useStyles()
 
-    const BASE_URL = 'http://localhost:7500'
-
       const [items, setItems] = useState([])
 
       useEffect(() => {
+        getItems()
+      }, [])
+
+      function getItems() {
         axios({
           url:`${BASE_URL}/items`,
           method:'GET',
@@ -123,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
         .catch(err => {
           console.log(err);
         })
-      }, [])
+      }
 
           return (
             <>
@@ -166,18 +171,12 @@ const useStyles = makeStyles((theme) => ({
                                 color="primary"
                                 size="medium"
                               />
-                              <UpdateButton />
-                              <Button
-                                variant="contained"
-                                color="secondary"
-                                size="small"
-                                className={classes.button}
-                                value={item._id}
-                                onClick={handleDelete}
-                                startIcon={<DeleteIcon />}
-                              >
-                                Delete
-                              </Button>
+                              <UpdateButton
+                                itemId={item._id}
+                              />
+                              <DeleteButton
+                                itemId={item._id}
+                              />
                             </CardActions>
                           </Card>
                         </Grid>
