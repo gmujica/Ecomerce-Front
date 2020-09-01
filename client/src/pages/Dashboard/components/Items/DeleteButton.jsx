@@ -1,14 +1,16 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import axios from 'axios'
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import MuiDialogTitle from '@material-ui/core/DialogTitle'
+import MuiDialogContent from '@material-ui/core/DialogContent'
+import MuiDialogActions from '@material-ui/core/DialogActions'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
+import Typography from '@material-ui/core/Typography'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { useSnackbar } from 'notistack'
 
 const styles = (theme) => ({
   root: {
@@ -50,8 +52,12 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
+
+
 export default function DeleteButton(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
   //const classes = useStyles()
 
@@ -61,6 +67,22 @@ export default function DeleteButton(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+    const handleDelete = () => {
+        axios({
+            url:`http://localhost:7500/items/${props.item._id}`,
+            method:'DELETE'
+        })
+        .then(function (response) {
+            if(response.status === 200) {
+              enqueueSnackbar('Data has been delete from the server', {variant: 'success'});
+            }
+        })
+        .catch(() => {
+            console.log('Internal server error')
+        })
+        setOpen(false)
+    }
 
   return (
     <div>
@@ -77,27 +99,26 @@ export default function DeleteButton(props) {
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title {props.itemId}
+            Are you sure you want to delete this item? 
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            Name: {props.item.name}
           </Typography>
           <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
+            Description: {props.item.description}
           </Typography>
           <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
+           Stock: {props.item.quantity}
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
-          </Button>
+            <Button autoFocus onClick={handleClose} color="secondary">
+                Cancel
+            </Button>
+            <Button autoFocus onClick={handleDelete} color="primary">
+                ok
+            </Button>
         </DialogActions>
       </Dialog>
     </div>

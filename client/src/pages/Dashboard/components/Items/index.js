@@ -172,10 +172,10 @@ const useStyles = makeStyles((theme) => ({
                                 size="medium"
                               />
                               <UpdateButton
-                                itemId={item._id}
+                                item={item}
                               />
                               <DeleteButton
-                                itemId={item._id}
+                                item={item}
                               />
                             </CardActions>
                           </Card>
