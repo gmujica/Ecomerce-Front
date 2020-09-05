@@ -82,6 +82,7 @@ export default function DeleteButton(props) {
             console.log('Internal server error')
         })
         setOpen(false)
+        //props.callBack.getItems()
     }
 
   return (
@@ -90,10 +91,8 @@ export default function DeleteButton(props) {
         variant="contained"
         color="secondary"
         size="small"
-        //className={classes.button}
-        //value={item._id}
-        //onClick={handleDelete}
-        startIcon={<DeleteIcon />} onClick={handleClickOpen}
+        onClick={handleClickOpen}
+        startIcon={<DeleteIcon />}  
       >
         Delete
       </Button>

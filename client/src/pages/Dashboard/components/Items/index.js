@@ -20,7 +20,7 @@ import axios from 'axios'
 //import saveItem from '../../../../services/index'
 import UpdateButton from './UpdateButton'
 import DeleteButton from './DeleteButton'
-import { getItems } from '../../../../utils'
+//import { getItems } from '../../../../utils'
 
 function Copyright() {
     return (
@@ -84,29 +84,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }))
 
-  const handleDelete = (e) => {
-    e.preventDefault()
-    const id = e.target.value
-    alert(id)
-      /*axios({
-        url:`http://localhost:7500/items/${e.target.value}`,
-        method:'DELETE',
-        //data: payload
-      })
-      .then(() =>{
-        console.log('Data has been delete from the server');
-        this.resetUserInputs()
-        this.getItemsData()
-      })
-      .catch(() => {
-        console.log('Internal server error');
-      })
-    */
-  }
-  
   const BASE_URL = 'http://localhost:7500'
 
-  export default function Items() { 
+  export default function Items() {
+
     const classes = useStyles()
 
       const [items, setItems] = useState([])
@@ -176,6 +157,7 @@ const useStyles = makeStyles((theme) => ({
                               />
                               <DeleteButton
                                 item={item}
+                                callBack={getItems()} 
                               />
                             </CardActions>
                           </Card>
